@@ -1,0 +1,66 @@
+export type Example = { code: string; modules: string[]; note?: string };
+
+function example(module: string, imports: string, jsx: string, setup = "", extra = ""): Example {
+  return { modules: [module], code: `"use client";\n\n${setup ? 'import { useState } from "react";\n' : ""}import { ${imports} } from "@mpeep/ui/${module}";\n${extra}\nexport default function Example() {\n${setup ? `  ${setup}\n` : ""}  return (\n    ${jsx}\n  );\n}\n` };
+}
+
+export const examples: Record<string, Example> = {
+  "User profile menu": example("profile-menu", "ProfileMenu", '<ProfileMenu name="Anjali Sharma" logoutHref="/logout" />'),
+  "Public header": example("public-header", "PublicHeader", '<PublicHeader brand={<a href="/" aria-label="Mpeep home"><MpeepLogo /></a>} actions={<><Button asChild variant="ghost"><a href="/signin">Log in</a></Button><Button asChild><a href="/register">Register</a></Button></>} />', "", 'import { MpeepLogo } from "@mpeep/ui/logo";\nimport { Button } from "@mpeep/ui/button";\n'),
+  "Header/navbar": example("header", "Header, WorkspaceHeader", '<div><Header brand={<MpeepLogo />} actions={<Button type="button">Dashboard</Button>} /><WorkspaceHeader logoutHref="/logout" workspace="Seller" title="Products" onOpenNavigation={() => alert("Open navigation")} /></div>', "", 'import { MpeepLogo } from "@mpeep/ui/logo";\nimport { Button } from "@mpeep/ui/button";\n'),
+  Tooltip: example("tooltip", "Tooltip, TooltipProvider, TooltipTrigger, TooltipContent", '<TooltipProvider><Tooltip><TooltipTrigger asChild><Button type="button">Details</Button></TooltipTrigger><TooltipContent side="right">View details</TooltipContent></Tooltip></TooltipProvider>', "", 'import { Button } from "@mpeep/ui/button";\n'),
+  Logo: example("logo", "MpeepLogo", '<MpeepLogo showWordmark markClassName="size-9" />'),
+  Sidebar: example("sidebar", "Sidebar, SidebarItem", '<Sidebar inline brand={<MpeepLogo showWordmark={!collapsed} />} open={open} onOpenChange={setOpen} collapsed={collapsed} onToggleCollapsed={() => setCollapsed(!collapsed)}><SidebarItem href="/dashboard" label="Dashboard" icon={<LayoutDashboard />} collapsed={collapsed} active /><SidebarItem href="/orders" label="Orders" icon={<Package />} collapsed={collapsed} /><SidebarItem href="/products" label="Products" icon={<Package />} collapsed={collapsed} /><SidebarItem href="/inventory" label="Inventory" icon={<Package />} collapsed={collapsed} /><SidebarItem href="/bookings" label="Bookings" icon={<Package />} collapsed={collapsed} /><SidebarItem href="/customers" label="Customers" icon={<Package />} collapsed={collapsed} /><SidebarItem href="/locations" label="Locations" icon={<Package />} collapsed={collapsed} /><SidebarItem disabled>Payments</SidebarItem></Sidebar>', 'const [open, setOpen] = useState(false);\n  const [collapsed, setCollapsed] = useState(false);', 'import { MpeepLogo } from "@mpeep/ui/logo";\nimport { LayoutDashboard, Package } from "lucide-react";\n'),
+  Stepper: example("stepper", "Stepper", '<div className="grid gap-10">\n      <Stepper steps={["Details", "Categories", "Variants"]} value={step} onChange={setStep} borderRadius={8} allowFutureSteps />\n      <Stepper steps={[{ label: "Details", icon: <UserRound /> }, { label: "Categories", icon: <Layers /> }, { label: "Variants", icon: <ShoppingCart /> }]} value={step} onChange={setStep} borderRadius="50%" allowFutureSteps />\n    </div>', 'const [step, setStep] = useState(1);', 'import { UserRound, Layers, ShoppingCart } from "lucide-react";\n'),
+  "Dashboard metric card": example("metric-card", "MetricCard", '<MetricCard variant="analytics" heading={128} subheading="New users" change={28} description="vs 100 in previous period" />'),
+  "Bar chart": example("bar-chart", "BarChart", '<BarChart variant="analytics" label="Daily paid orders" data={[{label:"Mon",value:4,formattedValue:"4"},{label:"Tue",value:7,formattedValue:"7"}]} />'),
+  "Multi-select": example("multi-select", "MultiSelect", '<MultiSelect label="Categories" options={[{value:"cement",label:"Cement"}]} placeholder="Select categories" value={value} onChange={setValue} />', 'const [value, setValue] = useState<string[]>([]);'),
+  "File/image uploader": example("image-uploader", "ImageUploader", '<ImageUploader images={images} onChange={setImages} onError={message => alert(message)} />', 'const [images, setImages] = useState<File[]>([]);'),
+  "Rich text editor": example("rich-text-editor", "RichTextEditor", '<RichTextEditor value={value} onChange={setValue} />', 'const [value, setValue] = useState("");'),
+  Calendar: example("calendar", "Calendar", '<Calendar mode="single" selected={day} onSelect={setDay} />', 'const [day, setDay] = useState<Date>();'),
+  "Time picker": example("time-picker", "TimePicker", '<div><label htmlFor="time">Time</label><TimePicker id="time" value={time} onChange={setTime} minuteStep={15} /></div>', 'const [time, setTime] = useState("");'),
+  "OTP input": example("input-otp", "InputOtp", '<InputOtp value={code} onChange={setCode} length={6} />', 'const [code, setCode] = useState("");'),
+  Slider: example("slider", "Slider", '<Slider aria-label="Quantity" value={quantity} onValueChange={setQuantity} min={0} max={100} step={1} />', 'const [quantity, setQuantity] = useState([25]);'),
+  "Form field": example("field", "Field, FieldLabel", '<Field><FieldLabel htmlFor="material">Material</FieldLabel><Input id="material" placeholder="Material name" /></Field>', "", 'import { Input } from "@mpeep/ui/input";\n'),
+  Separator: example("separator", "Separator", '<Separator orientation="horizontal" decorative />'),
+  Popover: example("popover", "Popover, PopoverTrigger, PopoverContent", '<Popover><PopoverTrigger asChild><Button type="button">Details</Button></PopoverTrigger><PopoverContent align="start">Additional details</PopoverContent></Popover>', "", 'import { Button } from "@mpeep/ui/button";\n'),
+  Button: example("button", "Button", '<div className="flex flex-wrap gap-3">\n      <Button type="button">Save changes</Button>\n      <Button type="button"><Plus aria-hidden="true" className="size-4" />Add item</Button>\n      <Button type="button" variant="outline">Add item<Plus aria-hidden="true" className="size-4" /></Button>\n      <Button type="button" loading>Saving changes</Button>\n      <Button type="button" variant="outline" loading>Loading</Button>\n      <Button type="button" size="icon" loading aria-label="Saving" />\n    </div>', "", 'import { Plus } from "lucide-react";\n'),
+  "Input field": example("input", "Input", '<Input aria-label="Material name" value={value} onChange={event => setValue(event.target.value)} placeholder="Material name" />', 'const [value, setValue] = useState("");'),
+  Textarea: example("textarea", "Textarea", '<Textarea aria-label="Notes" value={value} onChange={event => setValue(event.target.value)} placeholder="Add notes" />', 'const [value, setValue] = useState("");'),
+  "Search bar": example("filter-bar", "FilterBar", '<FilterBar search={{ value: query, onChange: setQuery, placeholder: "Search products" }} onReset={() => setQuery("")} />', 'const [query, setQuery] = useState("");'),
+  "Dropdown/select": example("select", "Select, SelectTrigger, SelectValue, SelectContent, SelectItem", '<Select value={status} onValueChange={setStatus}>\n      <SelectTrigger aria-label="Status"><SelectValue /></SelectTrigger>\n      <SelectContent><SelectItem value="active">Active</SelectItem><SelectItem value="paused">Paused</SelectItem></SelectContent>\n    </Select>', 'const [status, setStatus] = useState("active");'),
+  Checkbox: example("checkbox", "Checkbox", '<label className="flex items-center gap-2"><Checkbox checked={checked} onCheckedChange={setChecked} />Available only</label>', 'const [checked, setChecked] = useState<boolean | "indeterminate">(false);'),
+  "Date picker": example("date-picker", "DatePicker", '<div><label htmlFor="delivery-date">Delivery date</label><DatePicker id="delivery-date" value={date} onChange={setDate} fromYear={2020} toYear={2030} /></div>', 'const [date, setDate] = useState("");'),
+  PageHeader: example("page-header", "PageHeader", '<PageHeader title="Inventory" description="Available materials" onBack={() => window.history.back()} actions={<Button type="button" onClick={() => alert("Add item")}>Add item</Button>} />', "", 'import { Button } from "@mpeep/ui/button";\n'),
+  Pagination: example("pagination", "Pagination", '<Pagination page={page} pageSize={10} total={120} onPageChange={setPage} />', 'const [page, setPage] = useState(1);'),
+  "Menu dropdown": example("dropdown-menu", "DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem", '<DropdownMenu><DropdownMenuTrigger asChild><Button type="button" variant="outline">Actions</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem onSelect={() => alert("Edit")}>Edit</DropdownMenuItem></DropdownMenuContent></DropdownMenu>', "", 'import { Button } from "@mpeep/ui/button";\n'),
+  Card: example("card", "Card, CardHeader, CardContent, CardFooter", '<Card><CardHeader><h2 className="font-semibold">Item summary</h2></CardHeader><CardContent>Standard material</CardContent><CardFooter>Available</CardFooter></Card>'),
+  Table: example("data-table", "DataTable", '<DataTable columns={[{ key: "name", header: "Material", cell: row => row.name }]} rows={[{ id: "1", name: "Cement" }]} rowKey={row => row.id} loading={false} emptyMessage="No materials found" />'),
+  Badge: example("badge", "Badge", '<Badge variant="secondary">In stock</Badge>'),
+  "Status badge": example("status-badge", "StatusBadge", '<StatusBadge tone="success" dot>Published</StatusBadge>'),
+  Avatar: example("avatar", "Avatar, AvatarImage, AvatarFallback", '<Avatar><AvatarImage src="/avatar.jpg" alt="Anjali" /><AvatarFallback>AS</AvatarFallback></Avatar>'),
+  "Empty state": example("empty-state", "EmptyState", '<EmptyState title="No materials found" description="Try another search." />'),
+  "Loading skeleton": example("skeleton/skeleton", "Skeleton", '<div role="status" aria-label="Loading"><Skeleton className="h-5 w-48" /><Skeleton className="mt-2 h-4 w-32" /></div>'),
+  Spinner: example("loading-state", "LoadingState", '<LoadingState label="Loading materials" />'),
+  "Alert banner": example("dismissible-banner", "DismissibleBanner", 'visible ? <DismissibleBanner message="Changes saved." variant="success" autoHideMs={5000} onDismiss={() => setVisible(false)} /> : null', 'const [visible, setVisible] = useState(true);'),
+};
+
+for (const [label, prefix, module] of [["Modal/dialog", "Dialog", "dialog"], ["Sheet", "Sheet", "sheet"]]) {
+  examples[label] = example(module, `${prefix}, ${prefix}Trigger, ${prefix}Content, ${prefix}Header, ${prefix}Title, ${prefix}Description`, `<${prefix}><${prefix}Trigger asChild><Button type="button" variant="outline">Open</Button></${prefix}Trigger><${prefix}Content><${prefix}Header><${prefix}Title>Item details</${prefix}Title><${prefix}Description>Review the selected material.</${prefix}Description></${prefix}Header></${prefix}Content></${prefix}>`, "", 'import { Button } from "@mpeep/ui/button";\n');
+}
+
+const foundations: Record<string, string> = {
+  Colors: '<div className="bg-primary text-primary-foreground">Primary</div>\n<div className="bg-secondary text-secondary-foreground">Secondary</div>\n<span className="text-emerald-700">Success</span>\n<span className="text-amber-700">Warning</span>\n<span className="text-destructive">Danger</span>\n<span className="text-muted-foreground">Neutral</span>',
+  Typography: '<h1 className="text-3xl font-semibold">Heading</h1>\n<p className="text-base">Body</p>\n<label className="text-sm font-medium">Label</label>\n<p className="text-xs text-muted-foreground">Caption</p>',
+  Spacing: '<div className="flex gap-1 p-2">4px gap / 8px padding</div>\n<div className="space-y-3 p-4">12px gap / 16px padding</div>\n<div className="gap-6 p-8">24px gap / 32px padding</div>\n<div className="p-12">48px padding</div>',
+  Radius: '<button className="rounded-sm">4px</button>\n<div className="rounded-md">6px</div>\n<div className="rounded-lg">8px</div>',
+  Shadows: '<div className="shadow-sm">Small</div>\n<div className="shadow-md">Medium</div>\n<div className="shadow-lg">Modal</div>',
+  "Grid/layout": '<div className="grid grid-cols-4 gap-4 md:grid-cols-8 lg:grid-cols-12">\n  <div className="col-span-full">Content</div>\n</div>',
+};
+for (const [name, code] of Object.entries(foundations)) examples[name] = { code, modules: [], note: "Foundation utilities accept standard HTML attributes. They are not a separate React component." };
+examples.Icons = { code: 'import { Wrench, MapPin, UserRound, ShoppingCart, CalendarDays, CircleCheck } from "lucide-react";\n\n<Wrench aria-label="Service" size={24} strokeWidth={2} />', modules: [], note: "Lucide icons accept size (number or string, default 24), color (string, currentColor), strokeWidth (number, default 2), and standard SVG attributes." };
+examples.Table.modules.push("table");
+examples.Sidebar.modules.push("workspace-shell");
+examples.Pagination.modules.push("pagination-primitives");
+examples["Search bar"].modules.push("search-input");
+examples["Loading skeleton"].modules.push("skeleton/data-table-skeleton");
