@@ -32,7 +32,7 @@ export function MultiSelect({ label, options, placeholder, value, onChange, disa
             className="h-9 w-full rounded-sm border bg-transparent pl-8 pr-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
           />
         </div>}
-        <div className="max-h-64 overflow-y-auto">
+        <div className="max-h-64 min-h-0 overflow-y-auto">
           {!filtered.length && <p className="p-2 text-sm text-muted-foreground">{options.length ? "No matches." : "No options available."}</p>}
           {Array.from(new Set(filtered.map(option => option.group || ""))).map(group => <div key={group}>
             {group && <p className="p-2 text-xs font-semibold text-muted-foreground">{group}</p>}
