@@ -1,4 +1,5 @@
 {
+  "avatar.stories": [],
   "avatar": [
     {
       "name": "Avatar",
@@ -3382,7 +3383,7 @@
         },
         {
           "name": "src",
-          "type": "string | undefined",
+          "type": "string | Blob | undefined",
           "required": false,
           "defaultValue": null
         },
@@ -5158,6 +5159,7 @@
       ]
     }
   ],
+  "badge.stories": [],
   "badge": [
     {
       "name": "Badge",
@@ -6857,6 +6859,7 @@
       ]
     }
   ],
+  "bar-chart.stories": [],
   "bar-chart": [
     {
       "name": "BarChart",
@@ -6888,6 +6891,7 @@
       ]
     }
   ],
+  "button.stories": [],
   "button": [
     {
       "name": "Button",
@@ -8570,7 +8574,7 @@
           "name": "size",
           "type": "\"default\" | \"sm\" | \"lg\" | \"icon\" | null | undefined",
           "required": false,
-          "defaultValue": "\"default\""
+          "defaultValue": null
         },
         {
           "name": "slot",
@@ -8648,7 +8652,7 @@
           "name": "variant",
           "type": "\"default\" | \"destructive\" | \"outline\" | \"ghost\" | null | undefined",
           "required": false,
-          "defaultValue": "\"default\""
+          "defaultValue": null
         },
         {
           "name": "vocab",
@@ -8659,6 +8663,7 @@
       ]
     }
   ],
+  "calendar.stories": [],
   "calendar": [
     {
       "name": "Calendar",
@@ -10825,6 +10830,7 @@
       ]
     }
   ],
+  "card.stories": [],
   "card": [
     {
       "name": "Card",
@@ -17567,6 +17573,7 @@
       ]
     }
   ],
+  "checkbox.stories": [],
   "checkbox": [
     {
       "name": "Checkbox",
@@ -19338,6 +19345,7 @@
       ]
     }
   ],
+  "data-table.stories": [],
   "data-table": [
     {
       "name": "DataTable",
@@ -19405,6 +19413,7 @@
       ]
     }
   ],
+  "date-picker.stories": [],
   "date-picker": [
     {
       "name": "DatePicker",
@@ -19460,6 +19469,7 @@
       ]
     }
   ],
+  "dialog.stories": [],
   "dialog": [
     {
       "name": "Dialog",
@@ -33222,6 +33232,7 @@
       ]
     }
   ],
+  "dismissible-banner.stories": [],
   "dismissible-banner": [
     {
       "name": "DismissibleBanner",
@@ -33259,6 +33270,7 @@
       ]
     }
   ],
+  "dropdown-menu.stories": [],
   "dropdown-menu": [
     {
       "name": "DropdownMenuItem",
@@ -41955,6 +41967,7 @@
       ]
     }
   ],
+  "empty-state.stories": [],
   "empty-state": [
     {
       "name": "EmptyState",
@@ -43654,6 +43667,7 @@
       ]
     }
   ],
+  "field.stories": [],
   "field": [
     {
       "name": "Field",
@@ -50408,6 +50422,7 @@
       ]
     }
   ],
+  "filter-bar.stories": [],
   "filter-bar": [
     {
       "name": "FilterBar",
@@ -52113,6 +52128,7 @@
       ]
     }
   ],
+  "header.stories": [],
   "header": [
     {
       "name": "Header",
@@ -53870,6 +53886,7 @@
       ]
     }
   ],
+  "image-uploader.stories": [],
   "image-uploader": [
     {
       "name": "ImageUploader",
@@ -53913,6 +53930,7 @@
       ]
     }
   ],
+  "input-otp.stories": [],
   "input-otp": [
     {
       "name": "InputOtp",
@@ -53950,6 +53968,7 @@
       ]
     }
   ],
+  "input.stories": [],
   "input": [
     {
       "name": "Input",
@@ -55817,6 +55836,7 @@
       ]
     }
   ],
+  "label.stories": [],
   "label": [
     {
       "name": "Label",
@@ -57516,6 +57536,7 @@
       ]
     }
   ],
+  "loading-state.stories": [],
   "loading-state": [
     {
       "name": "LoadingState",
@@ -59209,6 +59230,7 @@
       ]
     }
   ],
+  "logo.stories": [],
   "logo": [
     {
       "name": "MpeepLogo",
@@ -59234,6 +59256,7 @@
       ]
     }
   ],
+  "metric-card.stories": [],
   "metric-card": [
     {
       "name": "MetricCard",
@@ -59301,6 +59324,7 @@
       ]
     }
   ],
+  "multi-select.stories": [],
   "multi-select": [
     {
       "name": "MultiSelect",
@@ -59344,6 +59368,7 @@
       ]
     }
   ],
+  "page-header.stories": [],
   "page-header": [
     {
       "name": "PageHeader",
@@ -59381,6 +59406,7 @@
       ]
     }
   ],
+  "pagination-primitives.stories": [],
   "pagination-primitives": [
     {
       "name": "Pagination",
@@ -71364,6 +71390,7 @@
       ]
     }
   ],
+  "pagination.stories": [],
   "pagination": [
     {
       "name": "Pagination",
@@ -71401,6 +71428,7 @@
       ]
     }
   ],
+  "popover.stories": [],
   "popover": [
     {
       "name": "PopoverContent",
@@ -74994,6 +75022,7 @@
       ]
     }
   ],
+  "profile-menu.stories": [],
   "profile-menu": [
     {
       "name": "ProfileMenu",
@@ -75013,6 +75042,7 @@
       ]
     }
   ],
+  "public-header.stories": [],
   "public-header": [
     {
       "name": "PublicHeader",
@@ -76718,6 +76748,7 @@
       ]
     }
   ],
+  "rich-text-editor.stories": [],
   "rich-text-editor": [
     {
       "name": "RichTextEditor",
@@ -76737,6 +76768,7 @@
       ]
     }
   ],
+  "search-input.stories": [],
   "search-input": [
     {
       "name": "SearchInput",
@@ -76774,6 +76806,7 @@
       ]
     }
   ],
+  "select.stories": [],
   "select": [
     {
       "name": "SelectLabel",
@@ -88882,6 +88915,7 @@
       ]
     }
   ],
+  "separator.stories": [],
   "separator": [
     {
       "name": "Separator",
@@ -90587,6 +90621,7 @@
       ]
     }
   ],
+  "sheet.stories": [],
   "sheet": [
     {
       "name": "Sheet",
@@ -102629,6 +102664,7 @@
       ]
     }
   ],
+  "sidebar.stories": [],
   "sidebar": [
     {
       "name": "Sidebar",
@@ -104453,6 +104489,7 @@
       ]
     }
   ],
+  "skeleton/data-table-skeleton.stories": [],
   "skeleton/data-table-skeleton": [
     {
       "name": "DataTableSkeleton",
@@ -104478,6 +104515,7 @@
       ]
     }
   ],
+  "skeleton/skeleton.stories": [],
   "skeleton/skeleton": [
     {
       "name": "Skeleton",
@@ -106165,6 +106203,7 @@
       ]
     }
   ],
+  "slider.stories": [],
   "slider": [
     {
       "name": "Slider",
@@ -107930,6 +107969,7 @@
       ]
     }
   ],
+  "status-badge.stories": [],
   "status-badge": [
     {
       "name": "StatusBadge",
@@ -109629,6 +109669,7 @@
       ]
     }
   ],
+  "stepper.stories": [],
   "stepper": [
     {
       "name": "Stepper",
@@ -109678,6 +109719,7 @@
       ]
     }
   ],
+  "table.stories": [],
   "table": [
     {
       "name": "Table",
@@ -111328,7 +111370,7 @@
         },
         {
           "name": "rules",
-          "type": "\"none\" | \"all\" | \"groups\" | \"rows\" | \"columns\" | undefined",
+          "type": "\"none\" | \"all\" | \"columns\" | \"rows\" | \"groups\" | undefined",
           "required": false,
           "defaultValue": null
         },
@@ -123304,6 +123346,7 @@
       ]
     }
   ],
+  "textarea.stories": [],
   "textarea": [
     {
       "name": "Textarea",
@@ -125075,6 +125118,7 @@
       ]
     }
   ],
+  "time-picker.stories": [],
   "time-picker": [
     {
       "name": "TimePicker",
@@ -125136,6 +125180,7 @@
       ]
     }
   ],
+  "tooltip.stories": [],
   "tooltip": [
     {
       "name": "TooltipContent",
@@ -128734,6 +128779,7 @@
       ]
     }
   ],
+  "workspace-shell.stories": [],
   "workspace-shell": [
     {
       "name": "WorkspaceShell",
